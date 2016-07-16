@@ -74,3 +74,7 @@ test.cb('calls cb with specified cb args', t => {
     t.end()
   }, 15)
 })
+
+test('returns a promise', t => {
+  t.is(typeof withTimeout().then, 'function')
+})
