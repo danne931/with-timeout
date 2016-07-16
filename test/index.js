@@ -2,17 +2,17 @@ import test from 'ava'
 import sinon from 'sinon'
 import withTimeout from '../index'
 
-const testCbCalled = ({ t, cb, timeBefore, timeWhen }) => {
+const testCbCalled = ({ t, cb, timeBefore, timeAfter }) => {
   const beforeCbCalled = setTimeout(() => {
     t.false(cb.called)
     clearTimeout(beforeCbCalled)
   }, timeBefore)
 
-  const whenCbCalled = setTimeout(() => {
+  const afterCbCalled = setTimeout(() => {
     t.true(cb.called)
-    clearTimeout(whenCbCalled)
+    clearTimeout(afterCbCalled)
     t.end()
-  }, timeWhen)
+  }, timeAfter)
 }
 
 test.beforeEach(t => {
@@ -22,23 +22,23 @@ test.beforeEach(t => {
 test.cb('calls cb after default timeout (500ms) if no timeout passed', t => {
   const cb = t.context.timeoutCb
   withTimeout(cb)
-  testCbCalled({ t, cb, timeBefore: 499, timeWhen: 500 })
+  testCbCalled({ t, cb, timeBefore: 499, timeAfter: 501 })
 })
 
 test.cb('calls cb after default timeout (500ms) if timeout passed is not of type string or number', t => {
   const cb = t.context.timeoutCb
-  withTimeout(cb, { time: {} })
-  testCbCalled({ t, cb, timeBefore: 499, timeWhen: 500 })
+  withTimeout(cb, {})
+  testCbCalled({ t, cb, timeBefore: 499, timeAfter: 501 })
 })
 
 test.cb('calls cb after user-defined timeout (number)', t => {
   const cb = t.context.timeoutCb
-  withTimeout(cb, { time: 101 })
-  testCbCalled({ t, cb, timeBefore: 100, timeWhen: 101 })
+  withTimeout(cb, 101)
+  testCbCalled({ t, cb, timeBefore: 100, timeAfter: 102 })
 })
 
 test.cb('calls cb after user-defined timeout (string)', t => {
   const cb = t.context.timeoutCb
-  withTimeout(cb, { time: '11' })
-  testCbCalled({ t, cb, timeBefore: 10, timeWhen: 11 })
+  withTimeout(cb, '11')
+  testCbCalled({ t, cb, timeBefore: 10, timeAfter: 12 })
 })
