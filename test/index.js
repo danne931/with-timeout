@@ -78,3 +78,19 @@ test.cb('calls cb with specified cb args', t => {
 test('returns a promise', t => {
   t.is(typeof withTimeout().then, 'function')
 })
+
+test('promise resolves with undefined if cb passed is not not of type function', t => {
+  const promise = withTimeout()
+  promise.then(result => {
+    t.is(result, undefined)
+  })
+})
+
+test('promise resolves with call to cb passed', t => {
+  const cb = () => 3
+  const promise = withTimeout(cb)
+
+  promise.then(result => {
+    t.is(result, 3)
+  })
+})
