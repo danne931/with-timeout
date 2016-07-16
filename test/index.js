@@ -44,12 +44,22 @@ test.cb('calls cb after user-defined timeout (string)', t => {
 })
 
 test.cb('calls cb with specified cb args', t => {
-  const cb = t.context.timeoutCb
-  withTimeout(cb, 10, 'hello', 'hi')
+  const cb1 = sinon.spy()
+  const cb2 = sinon.spy()
+  const cb3 = sinon.spy()
+  withTimeout(cb1, 10, 'hello', 'hi')
+  withTimeout(cb2, 10, [1, 2], [3, 4])
+  withTimeout(cb3, 10)
 
   const timeout = setTimeout(() => {
-    t.true(cb.called)
-    t.deepEqual(cb.args[0], ['hello', 'hi'])
+    t.true(cb1.called)
+    t.true(cb2.called)
+    t.true(cb3.called)
+
+    t.deepEqual(cb1.args[0], ['hello', 'hi'])
+    t.deepEqual(cb2.args[0], [[1, 2], [3, 4]])
+    t.is(cb3.args[0][0], undefined)
+
     clearTimeout(timeout)
     t.end()
   }, 11)
