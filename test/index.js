@@ -42,3 +42,15 @@ test.cb('calls cb after user-defined timeout (string)', t => {
   withTimeout(cb, '11')
   testCbCalled({ t, cb, timeBefore: 10, timeAfter: 12 })
 })
+
+test.cb('calls cb with specified cb args', t => {
+  const cb = t.context.timeoutCb
+  withTimeout(cb, 10, 'hello', 'hi')
+
+  const timeout = setTimeout(() => {
+    t.true(cb.called)
+    t.deepEqual(cb.args[0], ['hello', 'hi'])
+    clearTimeout(timeout)
+    t.end()
+  }, 11)
+})
