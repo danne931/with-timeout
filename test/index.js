@@ -31,8 +31,14 @@ test.cb('calls cb after default timeout (500ms) if timeout passed is not of type
   testCbCalled({ t, cb, timeBefore: 499, timeWhen: 500 })
 })
 
-test.cb('calls cb after user-defined timeout', t => {
+test.cb('calls cb after user-defined timeout (number)', t => {
   const cb = t.context.timeoutCb
   withTimeout(cb, { time: 101 })
   testCbCalled({ t, cb, timeBefore: 100, timeWhen: 101 })
+})
+
+test.cb('calls cb after user-defined timeout (string)', t => {
+  const cb = t.context.timeoutCb
+  withTimeout(cb, { time: '11' })
+  testCbCalled({ t, cb, timeBefore: 10, timeWhen: 11 })
 })

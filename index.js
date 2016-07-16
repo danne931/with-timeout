@@ -1,6 +1,9 @@
 export default function withTimeout (fn, { fnArgs, time } = {}) {
-  if (typeof time !== 'string' && typeof time !== 'number') {
+  if (typeof time !== 'number' && typeof time !== 'string') {
     time = 500
+  }
+  if (typeof time === 'string') {
+    time = parseInt(time)
   }
 
   return new Promise((resolve, reject) => {
