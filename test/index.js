@@ -94,3 +94,12 @@ test('promise resolves with call to cb passed', t => {
     t.is(result, 3)
   })
 })
+
+test('promise resolves with call to cb passed, passing in args', t => {
+  const cb = (...args) => args
+  const promise = withTimeout(cb, 100, 'a', 'b')
+
+  promise.then(result => {
+    t.deepEqual(result, ['a', 'b'])
+  })
+})
