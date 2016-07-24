@@ -1,6 +1,6 @@
 # with-timeout
 
-Promisified, boilerplate-free setTimeout.
+Promisified, boilerplate-free setTimeout
 
 [![Build Status](https://travis-ci.org/danne931/with-timeout.svg?branch=master)](https://travis-ci.org/danne931/with-timeout)
 [![npm version](https://img.shields.io/npm/v/with-timeout.svg?style=flat-square)](https://www.npmjs.com/package/with-timeout)

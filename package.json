@@ -1,7 +1,7 @@
 {
   "name": "with-timeout",
   "version": "0.0.1",
-  "description": "",
+  "description": "Promisified, boilerplate-free setTimeout",
   "main": "lib/index.js",
   "files": [
     "dist",
@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "repo": "https://github.com/danne931/with-timeout.git"
+    "url": "https://github.com/danne931/with-timeout.git"
   },
   "author": "Daniel Eisenbarger <danieleisenbarger@gmail.com> (https://github.com/danne931)",
   "license": "MIT",
