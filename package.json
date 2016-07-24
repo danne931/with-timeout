@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "index.js"
+  ],
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.15.2",
