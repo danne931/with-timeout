@@ -2,12 +2,7 @@ import test from 'ava'
 import sinon from 'sinon'
 import withTimeout from '../index'
 
-const testCbCalled = ({ t, cb, timeBefore, timeAfter }) => {
-  const beforeCbCalled = setTimeout(() => {
-    t.false(cb.called)
-    clearTimeout(beforeCbCalled)
-  }, timeBefore)
-
+const testCbCalled = ({ t, cb, timeAfter }) => {
   const afterCbCalled = setTimeout(() => {
     t.true(cb.called)
     clearTimeout(afterCbCalled)
@@ -21,32 +16,42 @@ test.beforeEach(t => {
 
 test.cb('calls cb after default timeout (500ms) if no timeout passed', t => {
   const cb = t.context.timeoutCb
+
+  t.false(cb.called)
   withTimeout(cb)
-  testCbCalled({ t, cb, timeBefore: 495, timeAfter: 505 })
+  testCbCalled({ t, cb, timeAfter: 505 })
 })
 
 test.cb('calls cb after default timeout (500ms) if timeout passed is not of type string or number', t => {
   const cb = t.context.timeoutCb
+
+  t.false(cb.called)
   withTimeout(cb, {})
-  testCbCalled({ t, cb, timeBefore: 495, timeAfter: 505 })
+  testCbCalled({ t, cb, timeAfter: 505 })
 })
 
 test.cb('calls cb after default timeout (500ms) if timeout passed is NaN', t => {
   const cb = t.context.timeoutCb
+
+  t.false(cb.called)
   withTimeout(cb, 'abc123')
-  testCbCalled({ t, cb, timeBefore: 495, timeAfter: 505 })
+  testCbCalled({ t, cb, timeAfter: 505 })
 })
 
 test.cb('calls cb after user-defined timeout (number)', t => {
   const cb = t.context.timeoutCb
+
+  t.false(cb.called)
   withTimeout(cb, 100)
-  testCbCalled({ t, cb, timeBefore: 95, timeAfter: 105 })
+  testCbCalled({ t, cb, timeAfter: 105 })
 })
 
 test.cb('calls cb after user-defined timeout (string)', t => {
   const cb = t.context.timeoutCb
+
+  t.false(cb.called)
   withTimeout(cb, '10')
-  testCbCalled({ t, cb, timeBefore: 5, timeAfter: 15 })
+  testCbCalled({ t, cb, timeAfter: 15 })
 })
 
 test.cb('calls cb with specified cb args', t => {
@@ -79,27 +84,22 @@ test('returns a promise', t => {
   t.is(typeof withTimeout().then, 'function')
 })
 
-test('promise resolves with undefined if cb passed is not not of type function', t => {
-  const promise = withTimeout()
-  promise.then(result => {
-    t.is(result, undefined)
-  })
+test('promise resolves with undefined if cb passed is not not of type function', async t => {
+  t.is(await withTimeout(), undefined)
 })
 
-test('promise resolves with call to cb passed', t => {
+test('promise resolves with call to cb passed', async t => {
   const cb = () => 3
-  const promise = withTimeout(cb)
-
-  promise.then(result => {
-    t.is(result, 3)
-  })
+  t.is(
+    await withTimeout(cb),
+    3
+  )
 })
 
-test('promise resolves with call to cb passed, passing in args', t => {
+test('promise resolves with call to cb passed, passing in args', async t => {
   const cb = (...args) => args
-  const promise = withTimeout(cb, 100, 'a', 'b')
-
-  promise.then(result => {
-    t.deepEqual(result, ['a', 'b'])
-  })
+  t.deepEqual(
+    await withTimeout(cb, 100, 'a', 'b'),
+    ['a', 'b']
+  )
 })

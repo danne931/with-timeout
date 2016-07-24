@@ -43,7 +43,14 @@
   "bugs": {
     "url": "https://github.com/danne931/with-timeout/issues"
   },
-  "keywords": [],
+  "keywords": [
+    "timeout",
+    "settimeout",
+    "promisify",
+    "promisify settimeout",
+    "promisified",
+    "promisified settimeout"
+  ],
   "standard": {
     "parser": "babel-eslint"
   },
