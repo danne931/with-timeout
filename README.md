@@ -1,6 +1,10 @@
 # with-timeout
 
-`with-timeout`: Promisified, boilerplate-free setTimeout.
+Promisified, boilerplate-free setTimeout.
+
+[![npm version](https://img.shields.io/npm/v/with-timeout.svg?style=flat-square)](https://www.npmjs.com/package/with-timeout)
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+![](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Install
 
@@ -8,7 +12,7 @@
 $ npm install --save with-timeout
 ```
 
-If you do not use a module bundler you may use the provided UMD builds via the `<script>` tag.
+Not using Node or a module bundler? Use the UMD builds via the `<script>` tag.
 - [https://npmcdn.com/with-timeout/dist/with-timeout.js](https://npmcdn.com/with-timeout/dist/with-timeout.js)  
 - [https://npmcdn.com/with-timeout/dist/with-timeout.min.js](https://npmcdn.com/with-timeout/dist/with-timeout.min.js)
 
