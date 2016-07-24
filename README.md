@@ -13,7 +13,7 @@ Promisified, boilerplate-free setTimeout.
 $ npm install --save with-timeout
 ```
 
-Not using Node or a module bundler? Use the UMD builds via the `<script>` tag.
+Not using Node or a module bundler? Use a UMD build via the `<script>` tag.
 - [https://npmcdn.com/with-timeout/dist/with-timeout.js](https://npmcdn.com/with-timeout/dist/with-timeout.js)  
 - [https://npmcdn.com/with-timeout/dist/with-timeout.min.js](https://npmcdn.com/with-timeout/dist/with-timeout.min.js)
 
