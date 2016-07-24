@@ -66,8 +66,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "standard",
-      "pre-push": "npm test"
+      "pre-commit": "standard"
     }
   }
 }
