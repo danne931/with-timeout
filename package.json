@@ -23,7 +23,7 @@
     "clean": "rimraf dist lib",
     "test": "ava",
     "check": "standard && npm test",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel index.js --out-dir lib",
+    "build:commonjs": "babel index.js --out-dir lib",
     "build:umd": "cross-env NODE_ENV=development webpack --display-modules index.js dist/with-timeout.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack --display-modules index.js dist/with-timeout.min.js",
     "build": "npm run clean && npm run build:commonjs && npm run build:umd && npm run build:umd:min",

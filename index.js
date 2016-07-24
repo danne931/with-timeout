@@ -2,9 +2,10 @@ export default function withTimeout (fn, time, ...args) {
   if (typeof time === 'string') {
     time = parseInt(time)
   }
-  if (typeof time !== 'number' && typeof time !== 'string' || Number.isNaN(time)) {
-    time = 500
-  }
+  if (typeof time !== 'number' &&
+    typeof time !== 'string' ||
+    Number.isNaN(time)
+  ) time = 500
 
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
