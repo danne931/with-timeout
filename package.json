@@ -1,6 +1,6 @@
 {
   "name": "with-timeout",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Promisified, boilerplate-free setTimeout",
   "main": "lib/index.js",
   "files": [
