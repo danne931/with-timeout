@@ -44,8 +44,10 @@
     "url": "https://github.com/danne931/with-timeout/issues"
   },
   "keywords": [
+    "with timeout",
     "timeout",
     "settimeout",
+    "promise",
     "promisify",
     "promisify settimeout",
     "promisified",
