@@ -14,7 +14,7 @@ $ npm install --save with-timeout
 ```
 
 Not using Node or a module bundler? Use a UMD build via the `<script>` tag.
-- [https://npmcdn.com/with-timeout/dist/with-timeout.js](https://npmcdn.com/with-timeout/dist/with-timeout.js)  
+- [https://npmcdn.com/with-timeout/dist/with-timeout.js](https://npmcdn.com/with-timeout/dist/with-timeout.js)
 - [https://npmcdn.com/with-timeout/dist/with-timeout.min.js](https://npmcdn.com/with-timeout/dist/with-timeout.min.js)
 
 ## Usage
@@ -28,6 +28,6 @@ const fn = (firstName = 'Agent', lastName = 'Smith') =>
 // After 500ms - 'Hello Agent Smith'
 withTimeout(fn).then(console.log)
 
-// After 1000ms - 'Hello Daniel Eisenbarger'
-withTimeout(fn, 1000, 'Daniel', 'Eisenbarger').then(console.log)
+// After 1000ms - 'Hello Keanu Reeves'
+withTimeout(fn, 1000, 'Keanu', 'Reeves').then(console.log)
 ```
