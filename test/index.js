@@ -103,3 +103,17 @@ test('promise resolves with call to cb passed, passing in args', async t => {
     ['a', 'b']
   )
 })
+
+test('cb passed is called with apply', async t => {
+  const o = {
+    a: function () {
+      return this.b
+    },
+    b: 3
+  }
+
+  t.is(
+    await withTimeout.call(o, o.a),
+    o.b
+  )
+})
