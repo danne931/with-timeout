@@ -6,7 +6,7 @@ export default function withTimeout (fn, time, ...args) {
     time = 500
   }
 
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const timeout = setTimeout(() => {
       clearTimeout(timeout)
       resolve(typeof fn === 'function' ? fn.apply(this, args) : undefined)

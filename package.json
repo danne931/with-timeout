@@ -29,8 +29,9 @@
   "scripts": {
     "clean": "rimraf dist lib",
     "test": "ava",
-    "cover": "npm run test && nyc report --reporter=text-lcov | coveralls",
     "check": "standard && npm test",
+    "coverage": "nyc npm test",
+    "report-coverage": "cat coverage/lcov.info | coveralls",
     "build:commonjs": "babel index.js --out-dir lib",
     "build:umd": "cross-env NODE_ENV=development webpack --display-modules index.js dist/with-timeout.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack --display-modules index.js dist/with-timeout.min.js",
@@ -68,6 +69,17 @@
     "require": [
       "babel-core/register"
     ]
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "check-coverage": true
   },
   "config": {
     "ghooks": {
