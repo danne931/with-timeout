@@ -1,6 +1,6 @@
 export default function withTimeout (fn, time, ...args) {
   if (typeof time === 'string') {
-    time = parseInt(time)
+    time = parseInt(time, 10)
   }
   if (typeof time !== 'number' || Number.isNaN(time)) {
     time = 500
